@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/templates/modeloGeral.xhtml">
+	<ui:define name="conteudo">
+
+		<f:event listener="#{orientadorBean.listar}" type="preRenderView" />
+
+		<h:form>
+			<p:toolbar>
+				<f:facet name="left">
+					<h:outputText value="Orientadores" />
+				</f:facet>
+			</p:toolbar>
+
+			<p:dataTable emptyMessage="Nenhum registro encontrado."
+				value="#{orientadorBean.listaOrientadores}"
+				filteredValue="#{orientadorBean.listaOrientadoresFiltrados}"
+				var="orientador" rows="6" paginator="true">
+
+				<f:facet name="footer">
+					<p:commandButton value="Novo"
+						action="/pages/orientadorCadastro.xhtml?faces-redirect=true" />
+				</f:facet>
+
+				<p:column headerText="Código">
+					<h:outputText value="#{orientador.codigo}" />
+				</p:column>
+
+				<p:column headerText="Nome do Orientador"
+					filterBy="#{orientador.nome}" sortBy="#{orientador.nome}">
+					<h:outputText value="#{orientador.nome}" />
+				</p:column>
+
+				<p:column headerText="Opções">
+					<p:button value="Excluir" outcome="/pages/orientadorCadastro.xhtml" >
+						<f:param name="oricod" value="#{orientador.codigo}"/>
+					</p:button>
+					
+					<p:button value="Editar" outcome="/pages/orientadorCadastro.xhtml" >
+						<f:param name="oricod" value="#{orientador.codigo}"/>
+					</p:button>
+				</p:column>
+			
+			</p:dataTable>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

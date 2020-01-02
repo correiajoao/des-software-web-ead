@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Sistema Java Web</title>
+</h:head>
+<h:body>
+	<p:growl id="msgGlobal" sticky="true" />
+	<p:layout fullPage="true">
+		<p:layoutUnit header="Sistema Java Web" position="north"
+			resizable="false" closable="false" collapsible="false">
+		</p:layoutUnit>
+		<p:layoutUnit
+			header="Desenvolvido pelos alunos do curso Bacharelado em Sistemas de Informação - UAB/UFAL"
+			position="south" resizable="false" closable="false"
+			collapsible="false">
+		</p:layoutUnit>
+		<p:layoutUnit header="Menu Principal" size="250" position="west"
+			resizable="false" closable="false" collapsible="false">
+			<h:form>
+				<p:panelMenu>
+					<p:submenu label="Arquivo">
+						<p:menuitem value="Principal" outcome="/pages/principal.xhtml" />
+						<p:menuitem value="Sair" />
+					</p:submenu>
+					<p:submenu label="Cadastros">
+						<p:menuitem value="Aluno" outcome="/pages/alunoPesquisa.xhtml" />
+						<p:menuitem value="Orientador" outcome="/pages/orientadorPesquisa.xhtml" />
+						<p:menuitem value="Usuario" outcome="/pages/usuarioPesquisa.xhtml" />
+					</p:submenu>
+					
+					<p:submenu label="Avaliações">
+					</p:submenu>
+				</p:panelMenu>
+			</h:form>
+		</p:layoutUnit>
+		<p:layoutUnit position="east" resizable="false" closable="false"
+			collapsible="false">
+		</p:layoutUnit>
+		<p:layoutUnit position="center" resizable="false" closable="false"
+			collapsible="false">
+			<ui:insert name="conteudo" />
+		</p:layoutUnit>
+	</p:layout>
+</h:body>
+</html>

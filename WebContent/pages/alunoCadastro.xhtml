@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/templates/modeloGeral.xhtml">
+<ui:define name="metadata">
+		<f:metadata>
+			<f:event listener="#{alunoBean.carregar}" type="preRenderView" />
+		</f:metadata>
+	</ui:define>
+	
+	<ui:define name="conteudo">
+		<h:form id="frmOriCad">
+			<p:toolbar>
+				<f:facet name="left">
+					<h:outputText value="Cadastro de Aluno" />
+				</f:facet>
+			</p:toolbar>
+			<h:panelGrid id="pnlOriCadDados" columns="2">
+				<p:outputLabel value="Código:" />
+				<p:inputText size="10" readonly="true" value="#{alunoBean.alunoCadastro.codigo}" />
+				
+				<p:outputLabel value="Nome:" />
+				<p:inputText maxlength="70" size="30" value="#{alunoBean.alunoCadastro.nome}" />
+				
+				
+				<p:outputLabel value="Curso"/>
+				
+				<p:selectOneMenu value="#{alunoBean.alunoCadastro.curso}" >
+					<f:selectItem itemLabel="Arquitetura" />
+					<f:selectItem itemLabel="Geografia" />
+					<f:selectItem itemLabel="Pedagogia" />
+				</p:selectOneMenu>
+				
+				<p:outputLabel value="Matrícula" />
+				<p:inputMask mask="9999999" size="8" value="#{alunoBean.alunoCadastro.matricula}" />
+					
+			</h:panelGrid>
+			<h:panelGrid columns="5">
+				<p:commandButton value="Novo"/>	
+				<p:commandButton value="Salvar"/>
+				<p:commandButton value="Excluir"/>
+				<p:commandButton value="Editar"/>
+				<p:commandButton value="Voltar" action="/pages/alunoPesquisa.xhtml" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
