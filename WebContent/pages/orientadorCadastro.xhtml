@@ -13,7 +13,7 @@
 	</ui:define>
 	
 	<ui:define name="conteudo">
-		<h:form id="frmOriCad">
+		<h:form id="frmOriCad">	
 			<p:toolbar>
 				<f:facet name="left">
 					<h:outputText value="Cadastro de Orientador" />
@@ -26,11 +26,11 @@
 				<p:inputText maxlength="70" size="30" value="#{orientadorBean.orientadorCadastro.nome}" />
 			</h:panelGrid>
 			<h:panelGrid columns="5">
-				<p:commandButton value="Novo"/>	
-				<p:commandButton value="Salvar"/>
-				<p:commandButton value="Excluir"/>
-				<p:commandButton value="Editar"/>
-				<p:commandButton value="Voltar" action="/pages/orientadorPesquisa.xhtml" />
+				<p:commandButton value="Novo" actionListener="#{orientadorBean.salvar}" update=":frmOriCad:pnlOriCadDados"/>	
+				<p:commandButton value="Salvar" actionListener="#{orientadorBean.salvar}"  update="msgGlobal :frmOriCad:pnlOriCadDados"/>
+				<p:commandButton value="Excluir" actionListener="#{orientadorBean.excluir}"  update="msgGlobal"/>
+				<p:commandButton value="Editar" actionListener="#{orientadorBean.editar}"  update="msgGlobal"/>
+				<p:commandButton value="Voltar" action="/pages/orientadorPesquisa.xhtml"  />
 			</h:panelGrid>
 		</h:form>
 	</ui:define>
